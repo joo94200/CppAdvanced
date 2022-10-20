@@ -2,7 +2,7 @@
 #include <string>
 #include<vector>
 
-void is_prime(int T)
+void is_prime(long long T)
 {
     if (T == 1 || T == 0)
     {
