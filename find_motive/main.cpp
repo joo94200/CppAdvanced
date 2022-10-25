@@ -11,16 +11,15 @@ int main(int argc, char* argv[])
     }
     ifstream input_text;
     input_text.open(argv[1]);
-    if (!input_text.is_open())
+    if (input_text.fail())
     {
-        cout << "The file " << argv[1] << " could not be opened." << endl;
+        cout << "The file " << argv[1] << " could not be opened.\n";
         return 1;
     }
     string str;
     int count = 0;
-    while(input_text)
+    while(input_text >> str)
     {
-        getline(input_text, str);
         if (str.find(argv[2]) != string::npos)
         {
             count++;
