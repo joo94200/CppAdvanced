@@ -4,19 +4,30 @@
 
 void is_prime(long long T)
 {
-    if (T == 1 || T == 0)
+    if (T < 2)
     {
         std::cout << T << " is a prime: False" << std::endl;
         return;
     }
-
-    for (auto i = 2; i <= T / 2; i++)
+    else if (T <= 3)
     {
-        if (T % i == 0)
+    	std::cout << T << " is a prime: True" << std::endl;
+	return;
+    }
+    if (T % 2 == 0 || T % 3 == 0)
+    {
+        std::cout << T << " is a prime: False" << std::endl;
+        return;
+    }
+    long long n = 5;
+    while (n * n <= T)
+    {
+        if (T % n == 0)
         {
             std::cout << T << " is a prime: False" << std::endl;
             return;
         }
+        n++;
     }
     std::cout << T << " is a prime: True" << std::endl;
     return;
@@ -24,25 +35,10 @@ void is_prime(long long T)
 
 int main()
 {
-    std::vector<long long> arr;
-    std::string line;
-    std::getline(std::cin, line);
-    std::string tmp = "";
-    for (long unsigned int i = 0; i < line.length(); i++)
+    long long prime;
+    while (std::cin >> prime)
     {
-        if (line[i] != ' ')
-        {
-            tmp += line[i];
-        }
-        if (line[i + 1] == ' ' || line[i + 1] == '\0')
-        {
-            arr.push_back(std::stoi(tmp));
-            tmp = "";
-        }
-    }
-    for (long unsigned int i = 0; i < arr.size(); i++)
-    {
-        is_prime(arr[i]);
+        is_prime(prime);
     }
     return 0;
 }
