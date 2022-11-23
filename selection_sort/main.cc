@@ -2,21 +2,28 @@
 
 #include <iostream>
 
-#include "my_sort.hpp"
-#include <deque>
 #include <list>
-#include <string>
 #include <vector>
+#include <deque>
 
-template <class CONT> void print_me(const CONT &c) {
-  for (auto v : c) {
-    std::cout << v;
-    std::cout.put(' ');
-  }
+#include <string>
+
+#include "my_sort.hpp"
+
+template<class CONT>
+void print_me(const CONT& c)
+{
+  for (auto v : c)
+    {
+      std::cout << v;
+      std::cout.put(' ');
+    }
   std::cout.put('\n');
 }
 
-template <class CONT, class T> void test(const std::vector<T> &v) {
+template<class CONT, class T>
+void test(const std::vector<T>& v)
+{
   // Copy data into a CONT
   auto c = CONT(v.cbegin(), v.cend());
 
@@ -24,7 +31,10 @@ template <class CONT, class T> void test(const std::vector<T> &v) {
   print_me(c);
 }
 
-template <class CONT> void test(const CONT &v) {
+
+template<class CONT>
+void test(const CONT& v)
+{
   std::cout << "Original data\n";
   print_me(v);
 
@@ -38,17 +48,20 @@ template <class CONT> void test(const CONT &v) {
   test<std::deque<typename CONT::value_type>>(v);
 }
 
-void test_int() {
-  auto v = std::vector{9, 5, 3, 2, 6, 6};
+void test_int()
+{
+  auto v = std::vector{9,5,3,2,6,6};
   test(v);
 }
 
-void test_str() {
-  auto v = std::vector<std::string>{"z", "x", "a", "aba", "c", "c", "uzm"};
+void test_str()
+{
+  auto v = std::vector<std::string>{"z","x","a","aba","c","c","uzm"};
   test(v);
 }
 
-int main() {
+int main()
+{
   test_int();
   test_str();
   return 0;
